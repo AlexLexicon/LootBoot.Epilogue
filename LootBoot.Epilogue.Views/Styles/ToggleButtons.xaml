@@ -1,0 +1,79 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_Background" Color="{StaticResource GRAY_TRANSPARENT_DARKER_1}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_Background_MouseOver" Color="{StaticResource GRAY_TRANSPARENT_DARKER_2}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_Background_MouseDown" Color="{StaticResource GRAY_TRANSPARENT_DARKER_3}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_Background_Checked" Color="{StaticResource GRAY_TRANSPARENT_DARKER_4}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_Background_Disabled" Color="{StaticResource GRAY_TRANSPARENT_NEUTRAL_0}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_Foreground" Color="{StaticResource BLACK}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_Foreground_MouseOver" Color="{StaticResource BLACK}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_Foreground_MouseDown" Color="{StaticResource BLACK}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_Foreground_Checked" Color="{StaticResource BLACK}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_Foreground_Disabled" Color="{StaticResource BLACK}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_BorderBrush" Color="{StaticResource WHITE}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_BorderBrush_MouseOver" Color="{StaticResource WHITE}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_BorderBrush_MouseDown" Color="{StaticResource WHITE}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_BorderBrush_Checked" Color="{StaticResource WHITE}"/>
+    <SolidColorBrush x:Key="Image_TOGGLEBUTTON_BorderBrush_Disabled" Color="{StaticResource WHITE}"/>
+
+    <Style x:Key="Image_TOGGLEBUTTON" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Background" Value="{StaticResource Image_TOGGLEBUTTON_Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Image_TOGGLEBUTTON_Foreground}"/>
+        <Setter Property="Foreground" Value="{StaticResource Image_TOGGLEBUTTON_BorderBrush}"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Border CornerRadius="0" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                        <Label Margin="{TemplateBinding Padding}" Padding="0" Background="{TemplateBinding Foreground}" OpacityMask="{TemplateBinding BorderBrush}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource Image_TOGGLEBUTTON_Background_MouseOver}"/>
+                <Setter Property="Foreground" Value="{StaticResource Image_TOGGLEBUTTON_Foreground_MouseOver}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Image_TOGGLEBUTTON_BorderBrush_MouseOver}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{StaticResource Image_TOGGLEBUTTON_Background_MouseDown}"/>
+                <Setter Property="Foreground" Value="{StaticResource Image_TOGGLEBUTTON_Foreground_MouseDown}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Image_TOGGLEBUTTON_BorderBrush_MouseDown}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{StaticResource Image_TOGGLEBUTTON_Background_Checked}"/>
+                <Setter Property="Foreground" Value="{StaticResource Image_TOGGLEBUTTON_Foreground_Checked}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Image_TOGGLEBUTTON_BorderBrush_Checked}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource Image_TOGGLEBUTTON_Background_Disabled}"/>
+                <Setter Property="Foreground" Value="{StaticResource Image_TOGGLEBUTTON_Foreground_Disabled}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Image_TOGGLEBUTTON_BorderBrush_Disabled}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="Eye_TOGGLEBUTTON" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource Image_TOGGLEBUTTON}">
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <ImageBrush ImageSource="/LootBoot.Epilogue.Views;component/Resources/eye.shut.png"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="BorderBrush">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="/LootBoot.Epilogue.Views;component/Resources/eye.open.png"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

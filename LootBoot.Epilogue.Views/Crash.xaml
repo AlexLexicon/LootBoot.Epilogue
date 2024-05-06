@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="LootBoot.Epilogue.Views.Crash"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:LootBoot.Epilogue.ViewModels;assembly=LootBoot.Epilogue.ViewModels"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance vm:CrashViewModel}" d:DesignWidth="800" d:DesignHeight="450">
+    <Grid Background="{StaticResource SPACE_BACKGROUND}">
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
+        <Label Foreground="{StaticResource WHITE_BRUSH}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24">
+            <TextBlock>There was a critical error with the game! :(</TextBlock>
+        </Label>
+        <Label Grid.Row="1" Foreground="{StaticResource WHITE_BRUSH}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14">
+            <TextBlock TextWrapping="Wrap" Text="{Binding ErrorMessage}"/>
+        </Label>
+        <Button Grid.Row="2" Width="120" Content="Quit" FontSize="14" HorizontalContentAlignment="Center" Style="{StaticResource Menu_BUTTON}" Command="{Binding QuitCommand}"/>
+    </Grid>
+    </Grid>
+</UserControl>

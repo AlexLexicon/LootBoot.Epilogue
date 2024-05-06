@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="LootBoot.Epilogue.Views.SummaryCount"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:v="clr-namespace:LootBoot.Epilogue.Views"
+             xmlns:vm="clr-namespace:LootBoot.Epilogue.ViewModels;assembly=LootBoot.Epilogue.ViewModels"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance vm:SummaryCountViewModel}" Width="256" Height="256" d:DesignWidth="256" d:DesignHeight="256">
+    <Grid>
+        <Viewbox Stretch="Uniform" Margin="16,0">
+            <DockPanel Width="256" Height="256">
+                <Viewbox Height="45" DockPanel.Dock="Top" StretchDirection="DownOnly">
+                    <Label Content="{Binding Title}" FontSize="42" Style="{StaticResource Basic_LABEL}"/>
+                </Viewbox>
+                <Label Content="{Binding Description}" FontSize="42" DockPanel.Dock="Bottom" Style="{StaticResource Basic_LABEL}"/>
+                <Image Margin="{Binding ImagePadding, Converter={StaticResource ThicknessToDouble}}" Source="{Binding ImageSource}" Stretch="Uniform" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+            </DockPanel>
+        </Viewbox>
+    </Grid>
+</UserControl>

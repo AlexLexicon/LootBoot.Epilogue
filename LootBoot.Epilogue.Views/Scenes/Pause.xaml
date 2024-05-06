@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="LootBoot.Epilogue.Views.Pause"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:v="clr-namespace:LootBoot.Epilogue.Views"
+             xmlns:vm="clr-namespace:LootBoot.Epilogue.ViewModels;assembly=LootBoot.Epilogue.ViewModels"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance vm:PauseViewModel}" d:DesignWidth="1920" d:DesignHeight="1080">
+    <Grid Background="{StaticResource GRAY_TRANSPARENT_DARKER_2_BRUSH}">
+        <Grid Margin="0,0,16,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.10*"/>
+            </Grid.ColumnDefinitions>
+            <Viewbox Grid.Column="1">
+                <ItemsControl ItemsSource="{Binding ItemsViewModels}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel VerticalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <v:PausedCollectable DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Viewbox>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Column="1" Grid.Row="1">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Label DockPanel.Dock="Top" FontSize="124" Style="{StaticResource Basic_LABEL}" Content="PAUSED"/>
+                    <Button Grid.Row="0" Style="{StaticResource Pause_BUTTON}" Content="CONTINUE" Command="{Binding ContinueCommand}"/>
+                    <Button Grid.Row="3" Style="{StaticResource Pause_BUTTON}" Content="OPTIONS" Command="{Binding OptionsCommand}"/>
+                    <Button Grid.Row="4" Style="{StaticResource Pause_BUTTON}" Content="QUIT TO MENU" Command="{Binding QuitToMenuCommand}"/>
+                    <Button Grid.Row="5" Style="{StaticResource Pause_BUTTON}" Content="QUIT TO DESKTOP" Command="{Binding QuitToDesktopCommand}"/>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</UserControl>

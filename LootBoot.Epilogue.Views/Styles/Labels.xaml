@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="Basic_LABEL_Background_Normal" Color="{StaticResource TRANSPARENT}"/>
+    <SolidColorBrush x:Key="Basic_LABEL_Foreground_Normal" Color="{StaticResource WHITE}"/>
+    <SolidColorBrush x:Key="Basic_LABEL_BorderBrush_Normal" Color="{StaticResource WHITE}"/>
+
+    <Style x:Key="Basic_LABEL" TargetType="{x:Type Label}">
+        <Setter Property="Background" Value="{StaticResource Basic_LABEL_Background_Normal}"/>
+        <Setter Property="Foreground" Value="{StaticResource Basic_LABEL_Foreground_Normal}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Basic_LABEL_BorderBrush_Normal}"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="Tw Cen MT" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource Basic_LABEL_Foreground_Normal}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

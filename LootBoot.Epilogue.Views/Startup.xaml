@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="LootBoot.Epilogue.Views.Startup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:LootBoot.Epilogue.ViewModels;assembly=LootBoot.Epilogue.ViewModels"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance vm:StartupViewModel}" d:DesignWidth="800" d:DesignHeight="450" IsHitTestVisible="False">
+    <UserControl.Resources>
+        <Storyboard x:Key="LoadedStoryboard" Completed="Storyboard_Completed">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:0" From="1.0" To="0.0" Duration="0:0:0.5"/>
+        </Storyboard>
+        <Style x:Key="Studio_LABEL" TargetType="{x:Type Label}" BasedOn="{StaticResource Basic_LABEL}">
+            <Setter Property="FontSize" Value="64"/>
+            <Setter Property="Opacity" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:1" From="0.0" To="1.0" Duration="0:0:0.5"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <!--<Trigger.ExitActions>
+                        <BeginStoryboard Storyboard="{StaticResource LoadedStoryboard}"/>
+                    </Trigger.ExitActions>-->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Viewbox Stretch="Fill">
+        <DockPanel IsEnabled="{Binding IsActive}" Width="{StaticResource DesignWindowWidth}" Height="{StaticResource DesignWindowHeight}" Background="{StaticResource SPACE_BACKGROUND}">
+            <DockPanel.Style>
+                <Style TargetType="{x:Type DockPanel}">
+                    <Setter Property="Opacity" Value="1"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource LoadedStoryboard}"/>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DockPanel.Style>
+            <Label IsEnabled="{Binding IsActive}" Style="{StaticResource Studio_LABEL}">
+                <TextBlock TextAlignment="Center">
+                    <TextBlock FontSize="48">Made By</TextBlock>
+                    <LineBreak/>
+                    <TextBlock>Alex Stroot</TextBlock>
+                </TextBlock>
+            </Label>
+        </DockPanel>
+    </Viewbox>
+</UserControl>

@@ -1,0 +1,99 @@
+﻿<UserControl x:Class="LootBoot.Epilogue.Views.Summary"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:v="clr-namespace:LootBoot.Epilogue.Views"
+             xmlns:vm="clr-namespace:LootBoot.Epilogue.ViewModels;assembly=LootBoot.Epilogue.ViewModels"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance vm:SummaryViewModel}" d:DesignWidth="1920" d:DesignHeight="1080">
+    <Grid Visibility="{Binding IsCreated, Converter={StaticResource ToVisibility}}">
+        <Grid IsEnabled="{Binding IsCreated}">
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Opacity" Value="0"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:1" From="0.0" To="1.0" Duration="0:0:0.7"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:0" From="1.0" To="0.0" Duration="0:0:0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
+            <Viewbox>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <DockPanel Grid.Row="0">
+                        <Label FontSize="100" Style="{StaticResource Basic_LABEL}">
+                            <TextBlock TextAlignment="Center">
+                                <TextBlock Text="ZONE "/>
+                                <TextBlock Text="{Binding ZoneIndex}"/>
+                            </TextBlock>
+                        </Label>
+                    </DockPanel>
+                    <DockPanel Grid.Row="1">
+                        <Border DockPanel.Dock="Top" BorderBrush="{StaticResource WHITE_BRUSH}" BorderThickness="0,4,0,0">
+                            <Label Margin="0,16,0,0" FontSize="45" Content="DESTROYED" Style="{StaticResource Basic_LABEL}"/>
+                        </Border>
+                        <ItemsControl  ItemsSource="{Binding SpacecraftSummariesViewModels}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <v:SummaryCount DataContext="{Binding}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </DockPanel>
+                    <DockPanel Grid.Row="2">
+                        <Border DockPanel.Dock="Top" BorderBrush="{StaticResource WHITE_BRUSH}" BorderThickness="0,4,0,0">
+                            <Label Margin="0,16,0,0" FontSize="45" Content="COLLECTED" Style="{StaticResource Basic_LABEL}"/>
+                        </Border>
+                        <ItemsControl ItemsSource="{Binding ItemsSummariesViewModels}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <v:SummaryCount DataContext="{Binding}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </DockPanel>
+                </Grid>
+            </Viewbox>
+            <Grid Grid.Row="1" Margin="16,0">
+                <Viewbox>
+                    <DockPanel Width="1920">
+                        <Button DockPanel.Dock="Right" Width="500" Content="Continue" Command="{Binding NextCommand}" Style="{StaticResource Next_BUTTON}"/>
+                        <Label/>
+                    </DockPanel>
+                </Viewbox>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

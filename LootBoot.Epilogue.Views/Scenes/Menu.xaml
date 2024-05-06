@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="LootBoot.Epilogue.Views.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:v="clr-namespace:LootBoot.Epilogue.Views"
+             xmlns:vm="clr-namespace:LootBoot.Epilogue.ViewModels;assembly=LootBoot.Epilogue.ViewModels"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance vm:MainMenuViewModel}" d:DesignWidth="800" d:DesignHeight="450" d:Background="Black">
+    <UserControl.Resources>
+        <Storyboard x:Key="CompletedStoryboard" Completed="Storyboard_Completed">
+            <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:1.5" From="1.0" To="0.0" Duration="0:0:0.3"/>
+        </Storyboard>
+
+        <Style x:Key="MainMenuTitle_LABEL" TargetType="{x:Type Label}" BasedOn="{StaticResource Basic_LABEL}">
+            <Setter Property="FontSize" Value="128"/>
+            <Setter Property="Opacity" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:0.5" From="0.0" To="1.0" Duration="0:0:1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard Storyboard="{StaticResource CompletedStoryboard}"/>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="MainMenuButtons_GRID" TargetType="{x:Type Grid}">
+            <Setter Property="Opacity" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:1" From="0.0" To="1.0" Duration="0:0:0.5"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:0" From="1.0" To="0.0" Duration="0:0:0.25"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Viewbox Stretch="Fill">
+        <DockPanel Width="{StaticResource DesignWindowWidth}" Height="{StaticResource DesignWindowHeight}">
+            <Label DockPanel.Dock="Bottom" Height="325" IsEnabled="{Binding IsAllowingActions}" Style="{StaticResource MainMenuTitle_LABEL}" Content="LOOT BOOT EPILOGUE"/>
+            <Grid DockPanel.Dock="Left" Width="768" Margin="64,64,0,0" IsEnabled="{Binding IsAllowingActions}" Style="{StaticResource MainMenuButtons_GRID}">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                    <Button Grid.Row="0" IsEnabled="{Binding IsContinueActionable}" Style="{StaticResource MainMenu_BUTTON}" Content="CONTINUE" Command="{Binding ContinueCommand}"/>
+                    <Button Grid.Row="1" IsEnabled="{Binding IsAllowingActions}" Style="{StaticResource MainMenu_BUTTON}" Content="NEW" Command="{Binding NewCommand}"/>
+                    <Button Grid.Row="2" IsEnabled="False" Style="{StaticResource MainMenu_BUTTON}" Content="LOAD" Command="{Binding LoadCommand}"/>
+                    <Button Grid.Row="3" IsEnabled="False" Style="{StaticResource MainMenu_BUTTON}" Content="OPTIONS" Command="{Binding OptionsCommand}"/>
+                    <Button Grid.Row="4" IsEnabled="False" Style="{StaticResource MainMenu_BUTTON}" Content="SECRETS" Command="{Binding SecretsCommand}"/>
+                    <Button Grid.Row="5" IsEnabled="{Binding IsAllowingActions}" Style="{StaticResource MainMenu_BUTTON}" Content="QUIT" Command="{Binding QuitCommand}"/>
+                </StackPanel>
+            </Grid>
+            <Label/>
+        </DockPanel>
+    </Viewbox>
+</UserControl>

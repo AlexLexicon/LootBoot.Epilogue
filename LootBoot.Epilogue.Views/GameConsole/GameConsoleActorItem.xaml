@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="LootBoot.Epilogue.Views.GameConsoleEntity"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm="clr-namespace:LootBoot.Epilogue.ViewModels.Console;assembly=LootBoot.Epilogue.ViewModels"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance vm:GameConsoleActorItemViewModel}" d:DesignWidth="400" Height="32">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Column="0" IsReadOnly="True" Text="{Binding Id}" Style="{StaticResource DebugConsole_TEXTBOX}"/>
+        <TextBox Grid.Column="1" IsReadOnly="True" Text="{Binding Name}" Style="{StaticResource DebugConsole_TEXTBOX}"/>
+    </Grid>
+</UserControl>

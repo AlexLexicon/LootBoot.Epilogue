@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="LootBoot.Epilogue.Views.WaveFactor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:v="clr-namespace:LootBoot.Epilogue.Views"
+             xmlns:vm="clr-namespace:LootBoot.Epilogue.ViewModels;assembly=LootBoot.Epilogue.ViewModels"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance vm:WaveFactorViewModel}" d:DesignWidth="64" d:DesignHeight="64">
+    <Viewbox>
+        <Grid Width="256" Height="256">
+            <Border Padding="16">
+                <Grid>
+                    <Border Background="{StaticResource GRAY_TRANSPARENT_DARKER_1_BRUSH}">
+                        <Border.OpacityMask>
+                            <ImageBrush ImageSource="/Resources/Images/dot.b.256.png" Stretch="Uniform"/>
+                        </Border.OpacityMask>
+                    </Border>
+                    <Border Margin="32" Background="{StaticResource GRAY_TRANSPARENT_NEUTRAL_0_BRUSH}" Visibility="{Binding IsComplete, Converter={StaticResource ToVisibility}}">
+                        <Border.OpacityMask>
+                            <ImageBrush ImageSource="/Resources/Images/dot.b.256.png" Stretch="Uniform"/>
+                        </Border.OpacityMask>
+                    </Border>
+                    <!--<Border Margin="16" Background="{StaticResource HUD_WAVEFACTOR_CLOSE}" Visibility="{Binding IsComplete, Converter={StaticResource ToVisibility}}">
+                        <Border.OpacityMask>
+                            <ImageBrush ImageSource="/Resources/Images/close.a.256.png" Stretch="Uniform"/>
+                        </Border.OpacityMask>
+                    </Border>-->
+                </Grid>
+            </Border>
+        </Grid>
+    </Viewbox>
+</UserControl>
+

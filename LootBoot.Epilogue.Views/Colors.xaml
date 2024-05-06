@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="TRANSPARENT">Transparent</Color>
+    <Color x:Key="WHITE">White</Color>
+    <Color x:Key="BLACK">Black</Color>
+    <Color x:Key="WHITE_TRANSPARENT_NEUTRAL_0">#AAFFFFFF</Color>
+    <Color x:Key="GRAY_TRANSPARENT_NEUTRAL_0">#7FFFFFFF</Color>
+    <Color x:Key="GRAY_TRANSPARENT_DARKER_1">#7FB6B6B6</Color>
+    <Color x:Key="GRAY_TRANSPARENT_DARKER_2">#7F646464</Color>
+    <Color x:Key="GRAY_TRANSPARENT_DARKER_3">#C8646464</Color>
+    <Color x:Key="GRAY_TRANSPARENT_DARKER_4">#E3646464</Color>
+    <Color x:Key="GRAY_TRANSPARENT_DARKER_5">#C8000000</Color>
+    <Color x:Key="GREEN">#FF3CDC4E</Color>
+    <Color x:Key="GRAY_GREEN">#FF5EAB67</Color>
+    <Color x:Key="RED">#FFC10000</Color>
+    <Color x:Key="GRAY_RED">#FFAD6363</Color>
+
+    <Color x:Key="SPACE">#FF131520</Color>
+
+    <Color x:Key="COMMON">#FFF9F9F9</Color>
+    <Color x:Key="RARE">#FF49B3FF</Color>
+    <Color x:Key="REMARKABLE">#FFB26DFF</Color>
+    <Color x:Key="MASTER">#FFFF9719</Color>
+
+    <SolidColorBrush x:Key="TRANSPARENT_BRUSH" Color="{StaticResource TRANSPARENT}"/>
+    <SolidColorBrush x:Key="WHITE_BRUSH" Color="{StaticResource WHITE}"/>
+    <SolidColorBrush x:Key="BLACK_BRUSH" Color="{StaticResource BLACK}"/>
+    <SolidColorBrush x:Key="WHITE_TRANSPARENT_NEUTRAL_0_BRUSH" Color="{StaticResource WHITE_TRANSPARENT_NEUTRAL_0}"/>
+    <SolidColorBrush x:Key="GRAY_TRANSPARENT_NEUTRAL_0_BRUSH" Color="{StaticResource GRAY_TRANSPARENT_NEUTRAL_0}"/>
+    <SolidColorBrush x:Key="GRAY_TRANSPARENT_DARKER_1_BRUSH" Color="{StaticResource GRAY_TRANSPARENT_DARKER_1}"/>
+    <SolidColorBrush x:Key="GRAY_TRANSPARENT_DARKER_2_BRUSH" Color="{StaticResource GRAY_TRANSPARENT_DARKER_2}"/>
+    <SolidColorBrush x:Key="GRAY_TRANSPARENT_DARKER_3_BRUSH" Color="{StaticResource GRAY_TRANSPARENT_DARKER_3}"/>
+    <SolidColorBrush x:Key="GRAY_TRANSPARENT_DARKER_4_BRUSH" Color="{StaticResource GRAY_TRANSPARENT_DARKER_4}"/>
+    <SolidColorBrush x:Key="GRAY_TRANSPARENT_DARKER_5_BRUSH" Color="{StaticResource GRAY_TRANSPARENT_DARKER_5}"/>
+
+    <SolidColorBrush x:Key="HUD_WAVE_CHECKMARK" Color="{StaticResource GREEN}"/>
+    <SolidColorBrush x:Key="HUD_WAVE_ACTIVE" Color="{StaticResource WHITE_TRANSPARENT_NEUTRAL_0}"/>
+    <SolidColorBrush x:Key="HUD_WAVEFACTOR_CLOSE" Color="{StaticResource GRAY_TRANSPARENT_DARKER_4}"/>
+
+    <SolidColorBrush x:Key="HUD_ENEMIESINCOMING" Color="{StaticResource WHITE}"/>
+    <SolidColorBrush x:Key="HUD_ZONECOMPLETE" Color="{StaticResource WHITE}"/>
+    
+    <SolidColorBrush x:Key="CONSOLE_BACKGROUND" Color="{StaticResource GRAY_TRANSPARENT_DARKER_5}"/>
+    <SolidColorBrush x:Key="CONSOLE_FOREGROUND" Color="{StaticResource GREEN}"/>
+
+    <SolidColorBrush x:Key="SPACE_BACKGROUND" Color="{StaticResource SPACE}"/>
+
+    <SolidColorBrush x:Key="COMMON_BACKGROUND" Color="{StaticResource COMMON}"/>
+    <SolidColorBrush x:Key="RARE_BACKGROUND" Color="{StaticResource RARE}"/>
+    <SolidColorBrush x:Key="REMARKABLE_BACKGROUND" Color="{StaticResource REMARKABLE}"/>
+    <SolidColorBrush x:Key="MASTER_BACKGROUND" Color="{StaticResource MASTER}"/>
+    
+</ResourceDictionary>

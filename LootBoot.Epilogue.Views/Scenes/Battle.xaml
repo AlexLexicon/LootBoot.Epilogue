@@ -1,0 +1,146 @@
+﻿<UserControl x:Class="LootBoot.Epilogue.Views.Battle"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:v="clr-namespace:LootBoot.Epilogue.Views"
+             xmlns:vm="clr-namespace:LootBoot.Epilogue.ViewModels;assembly=LootBoot.Epilogue.ViewModels"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance vm:BattleViewModel}" d:DesignWidth="1920" d:DesignHeight="1080">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="0" Margin="0,32,0,0">
+            <DockPanel Visibility="{Binding IsCreated, Converter={StaticResource ToVisibility}}">
+                <DockPanel.Style>
+                    <Style TargetType="{x:Type DockPanel}">
+                        <Setter Property="Opacity" Value="0"/>
+                        <Style.Triggers>
+                            <Trigger Property="Visibility" Value="Visible">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.5"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DockPanel.Style>
+                <Label DockPanel.Dock="Top" Height="42" Content="WAVES" FontSize="32" Style="{StaticResource Basic_LABEL}"/>
+                <ItemsControl DockPanel.Dock="Top" Margin="0,16,0,8" Height="75" ItemsSource="{Binding WaveViewModels}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <v:Wave DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <Grid DockPanel.Dock="Top" Height="55">
+                    <DockPanel Visibility="{Binding IsWaveFactors, Converter={StaticResource ToVisibility}}">
+                        <DockPanel.Style>
+                            <Style TargetType="{x:Type DockPanel}">
+                                <Setter Property="Opacity" Value="0"/>
+                                <Style.Triggers>
+                                    <Trigger Property="Visibility" Value="Visible">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:0.5"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DockPanel.Style>
+                        <Label DockPanel.Dock="Top" Height="20" Content="TARGETS" FontSize="14" Style="{StaticResource Basic_LABEL}"/>
+                        <ItemsControl Height="35" ItemsSource="{Binding WaveFactorViewModels}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <v:WaveFactor DataContext="{Binding}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </DockPanel>
+                </Grid>
+                <Grid Margin="0,8,0,0" Height="83">
+                    <Grid Visibility="{Binding IsCompletable, Converter={StaticResource ToVisibility}}">
+                        <Label Content="WAVE COMPLETE" FontSize="64" IsEnabled="{Binding IsWaveCompelete}">
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}" BasedOn="{StaticResource Basic_LABEL}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsEnabled" Value="True">
+                                            <Trigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:0" From="0.0" To="1.0" Duration="0:0:1"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.EnterActions>
+                                            <Trigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:0" From="1.0" To="0.0" Duration="0:0:1"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </Trigger.ExitActions>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </Grid>
+                </Grid>
+            </DockPanel>
+        </Viewbox>
+        <Grid Grid.Row="2" Visibility="{Binding IsWavesLeft, Converter={StaticResource ToVisibility}}">
+            <Viewbox>
+                <Grid Margin="0,64" Visibility="{Binding IsStarted, Converter={StaticResource ToVisibility}}">
+                    <Label Foreground="{StaticResource HUD_ENEMIESINCOMING}" FontSize="82" IsEnabled="{Binding IsEnemiesIncoming}">
+                        <Label.Style>
+                            <Style TargetType="{x:Type Label}" BasedOn="{StaticResource Basic_LABEL}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsEnabled" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard RepeatBehavior="Forever">
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:0" From="0.0" To="1.0" Duration="0:0:1"/>
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:1" From="1.0" To="0.0" Duration="0:0:1"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity" BeginTime="0:0:0" From="1.0" To="0.0" Duration="0:0:1"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Style>
+                        <TextBlock TextAlignment="Center">
+                            <TextBlock Text="WARNING"/>
+                            <LineBreak/>
+                            <TextBlock Text="ENEMIES INCOMING"/>
+                        </TextBlock>
+                    </Label>
+                </Grid>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</UserControl>

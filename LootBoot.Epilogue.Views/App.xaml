@@ -1,0 +1,22 @@
+﻿<Application x:Class="LootBoot.Epilogue.Views.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="Window.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Constants.xaml"/>
+                <ResourceDictionary Source="Converters.xaml"/>
+                <ResourceDictionary Source="Colors.xaml"/>
+                <ResourceDictionary Source="Styles/Labels.xaml"/>
+                <ResourceDictionary Source="Styles/Buttons.xaml"/>
+                <ResourceDictionary Source="Styles/GridSplitters.xaml"/>
+                <ResourceDictionary Source="Styles/ListBoxes.xaml"/>
+                <ResourceDictionary Source="Styles/TextBlocks.xaml"/>
+                <ResourceDictionary Source="Styles/TextBoxs.xaml"/>
+                <ResourceDictionary Source="Styles/ToggleButtons.xaml"/>
+                <ResourceDictionary Source="Styles/Collections.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
